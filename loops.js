@@ -10,8 +10,18 @@ let num = 10
 // }
 
 // do while
-do {
+// do {
     
-    num++
-    console.log (num)
-} while (num <=7)
+//     num++
+//     console.log (num)
+// } while (num <=7)
+
+
+let sumOLoop = 0
+
+for (let i = 0; i <= num; i+=2) {
+    console.log(i)
+    if (i ==6) break
+    sumOLoop += i
+}
+console.log(sumOLoop)
