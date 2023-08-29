@@ -19,9 +19,17 @@ let num = 10
 
 let sumOLoop = 0
 
+// for (let i = 0; i <= num; i+=2) {
+//     console.log(i)
+//     if (i ==6) break
+//     sumOLoop += i
+// }
+// console.log(sumOLoop)
+
 for (let i = 0; i <= num; i+=2) {
+    
+    if (i == 6) continue
     console.log(i)
-    if (i ==6) break
     sumOLoop += i
 }
 console.log(sumOLoop)
