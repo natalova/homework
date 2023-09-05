@@ -62,4 +62,3 @@ for (let w= 0; w < result2.length; w++) {
     console.log(resultWithUpperC2)
 }
 getOnlyString(arr1)
-//
