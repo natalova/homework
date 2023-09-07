@@ -47,7 +47,7 @@ function findValuesType(Array3) {
 
   const Array3 = [1000, "test 1", "test 2", "test 3", 3000, 1, true, new Date()];
   
-  const {strArr, numArr} = findValuesType(Array3);
+  let {strArr, numArr} = findValuesType(Array3);
 
   console.log("String:", strArr, "Number:", numArr);
  
