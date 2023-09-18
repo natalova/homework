@@ -1,3 +1,7 @@
+// створити клас нащадок Worker - у якого має бути свій конструктор 
+// з оголошенням двох полів salary, work time. Також має бути два метода 
+// який виводить привітання, і каже що робота завершена.
+
 class Human {
 
     name
@@ -14,6 +18,8 @@ class Human {
 
 
 class Worker extends  Human {
+
+// робочий день з 09:00 до 18:00
 
     workTimeStart = 9
     workTimeEnd = 18
@@ -35,15 +41,19 @@ class Worker extends  Human {
     sayWorkIsFinish(){
         console.log(`My work is finished`)
     }
+// створити метод який буде виводити в консоль повідомлення чи працює 
+// зараз працівник чи ні
 
     isWork() {
-        let currentTime = new Date().getHours();
+        let currentTime = new Date().getHours()
+
+//і в залежності від години виклику методу відображати текст робочі години чи ні
         if(this.workTimeStart >= currentTime && this.workTimeEnd <= currentTime) {
-            return true;
+            return true
         }
         else {
-            this.sayWorkIsFinish();
-            return false;
+            this.sayWorkIsFinish()
+            return false
         }
     }
 }
