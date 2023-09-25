@@ -10,5 +10,5 @@
     return /^[A-Z]+$/.test(textinput);
   }
   
-  console.log(UpperCaseForAllLetters('TEXTWITHAPPERCASE'))
+  console.log(UpperCaseForAllLetters('TEXTWITOUTHAPPERCASE'))
   console.log(UpperCaseForAllLetters('TEXTWITHAPPERCASe'))
