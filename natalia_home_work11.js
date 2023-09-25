@@ -4,10 +4,10 @@
 //If the string is empty or doesn't have any letter in it - 
 //the function should return false.
     if (!textinput || !/[a-zA-Z]/.test(textinput)) {
-      return false;
+      return false
     }
 
-    return /^[A-Z]+$/.test(textinput);
+    return /^[A-Z]+$/.test(textinput)
   }
   
   console.log(UpperCaseForAllLetters('TEXTWITOUTHAPPERCASE'))
