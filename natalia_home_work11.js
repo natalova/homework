@@ -6,7 +6,6 @@
     if (!textinput || !/[a-zA-Z]/.test(textinput)) {
       return false
     }
-
     return /^[A-Z]+$/.test(textinput)
   }
   

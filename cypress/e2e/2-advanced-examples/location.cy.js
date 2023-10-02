@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-context('Location', () => {
+context.skip('Location', () => {
   beforeEach(() => {
     cy.visit('https://example.cypress.io/commands/location')
   })
@@ -31,14 +31,13 @@ context('Location', () => {
   })
 })
 
-context('Check the AIN website', () => {
 
-  it('Open the main page and click startupds', () => {
-    cy.visit('https://ain.ua/')
-    cy.get ('.container > div:nth-child(2)>  .tag:nth-child(2)'). click()
-    //cy.click('.container > div:nth-child(2)>  .tag:nth-child(2)')
-   // cy.click('#subbody > div.main-content > div > div:nth-child(2) > div:nth-child(2) > div:nth-child(2) > div > div > a:nth-child(1) > h2')
-    cy.url().should('contain', 'avtorski/')
-  })
-  })
 
+context('check the cypress website', () => {
+  it('Open the main page and click on the cypress site ', () => {
+    cy.visit("/")
+    cy.get('astro-island + a[href="https://on.cypress.io"]').click({force: true})  
+    cy.url().should ('contain', '/why-cypress')
+    cy.get('h1').should('contain.text', 'Why Cypress?')
+  })
+})

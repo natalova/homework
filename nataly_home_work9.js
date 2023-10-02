@@ -61,3 +61,5 @@ class Worker extends  Human {
 let worker = new Worker("Worker1")
 console.log(worker.sayHello())
 console.log(worker.isWork())
+
+
