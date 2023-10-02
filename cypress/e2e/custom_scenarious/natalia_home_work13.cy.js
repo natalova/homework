@@ -55,11 +55,10 @@ describe('Testing cypress website', () => {
     })
 
     it('9 - footer items display', () => {
-        cy.viewport(1440, 1024)
+        cy.viewport(1440, 1024).wait(3000)
         cy.get('.footer-legal > ul > li > a').eq(0)
         .contains('Privacy Policy')
         .click({force: true}).wait(2000)
-    
     })
        
 
