@@ -1,14 +1,23 @@
 /// <reference types="cypress" />
 
+import MainPage from '../../pages/main.js'
+import PostmanPage from '../../pages/postman_page'
+//import { contains } from "cypress/types/jquery"
+
 describe('Testing guru website', () => {
-   
-   beforeEach(() => {
-    cy.visit('https://www.guru99.com/')
-    cy.setCookie('authCoka', 'someCookie')
-   })
+
+    const mainpage = new MainPage()
+    const postmanpage = new PostmanPage()
+    beforeEach(() => {
+     cy.visit('https://www.guru99.com/')
+//    // cy.setCookie('authCoka', 'someCookie')
+//    // cy.loginAndSetCookie('https://www.guru99.com/')
+    })
     
-   it ('open the site', () => {
-        cy.get('h1.thick-heading').should('be.visible');
+   it.skip ('open the site', () => {
+        cy.get('h1.thick-heading', {timeout: 6000}).should('be.visible'); //correct syntax of timeout
+        cy.get(4000) // incorrect syntax of timeout
+        cy.get('h1.thick-heading').should('be.visible', {timeout: 6000}) // incorrect syntax of timeout
     })
 
     it.skip('check search and validate results', () => {
@@ -23,7 +32,7 @@ describe('Testing guru website', () => {
         .and('contain', 'About')
     })
 
-    it('click on software testing variant form dropdown list', () => {
+    it.skip('click on software testing variant form dropdown list', () => {
         cy.get('#primary-menu span.nav-drop-title-wrap').eq(0).click()
         // cy.get('a[aria-current="page"] + ul.sub-menu.clicked').should('be.visible')
 
@@ -35,5 +44,32 @@ describe('Testing guru website', () => {
        // .and('have.css', 'margin-top', '0px')
         cy.getCookie('authCoka').should('exist')
 
+        cy.get('p strong').eq(1).then(($textFundamentalsElement) => { //add alias
+           // $textFundamentalsElement.contents() //use alias
+       // cy.wait($textFundamentalsElement) //use alias
+       cy.wrap($textFundamentalsElement).should(('contain.text', 'Testing Fundamentals'))
+       
+        })
     })
+
+    it('click on the postman link from dropdown POM', () => {
+       mainpage.dropdownlist().eq(0).click()
+       mainpage.elementindropdownlist().eq(16)
+       .should('have.text', 'Postman')
+       .click()
+       postmanpage.imagewithPostmanDetails({timeout: 8000}).should('be.visible')
+      
     })
+
+    it('open page1', () => {
+    //     cy.get('h1.thick-heading').then(($linkMainPage) => {
+    //     debugger
+    // })
+//    cy.get('a[title="Software Testing"]').debug()
+     cy.visit('/software-testing.html')
+     cy.log('test11111111')
+     //cy.get('h2').pause()
+     cy.task('log', { greeting: 'Hello', name: 'World' })
+     //cy.get('table.table').eq(1).pause()
+}) 
+})
