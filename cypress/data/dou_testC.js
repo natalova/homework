@@ -1,4 +1,4 @@
-
+//pageObject
 const selectTopic = '.bi-vector-pen';
 
 export const mainPage = {

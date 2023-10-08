@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-//import created pattern
+//import created object pattern 
 import { mainPage } from '../../data/dou_testC';
 
 
