@@ -1,4 +1,9 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require ('cypress');
+const fs = require ('fs-extra')
+const path = require  ('path')
+
+
+
 
 module.exports = defineConfig({
   e2e: {
@@ -13,7 +18,18 @@ module.exports = defineConfig({
     },
    // specPattern: 'cypress/e2e/myTests/*.cy.js',
     setupNodeEvents(on, config) {
-      on('task', {log(message) {console.log(message); return null }})
+      on('task', 
+      {log(message) {
+        console.log(message);
+         return null },
+
+      savedUrl({ url, nameOfJsonFile }) {
+        const filePath = path.join(config.fixturesFolder, `${nameOfJsonFile}.json`)
+        fs.outputJsonSync(filePath, { url })
+        return null
+      }
+    })
+
       const newUrl = config.env.urlFromCli || 'https://www.guru99.com'
       config.baseUrl = newUrl
 
