@@ -14,7 +14,11 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+//import './commands'
 
+const {addCommands} = require ('cypress-mongodb/dist/index-browser');
+addCommands();
+//import { addCommands } from 'cypress-mongodb/dist/index-browser';
+//addCommands();
 // Alternatively you can use CommonJS syntax:
-// require('./commands')
+require('./commands')

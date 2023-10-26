@@ -1,7 +1,19 @@
 const { defineConfig } = require ('cypress');
-const fs = require ('fs-extra')
-const path = require  ('path')
+const fs = require ('fs-extra');
+const path = require  ('path');
+//import {configurePlagin} from "cypress-mongodb";
+const {configurePlagin} = require ("cypress-mongodb")
 
+
+//export default defineConfig({
+  module.exports = defineConfig({
+  env: {
+    mongodb: {
+      uri: 'mongodb://127.0.0.1:27017',
+      database: 'test'
+    }
+  }
+})
 
 
 
@@ -13,8 +25,8 @@ module.exports = defineConfig({
     defaultCommandTimeout: 6000,
    // baseUrl: 'https://www.cypress.io',
     retries: {
-      openMode: 2,
-      runMode: 2
+      openMode: 1,
+      runMode: 1
     },
    // specPattern: 'cypress/e2e/myTests/*.cy.js',
     setupNodeEvents(on, config) {
@@ -42,6 +54,9 @@ module.exports = defineConfig({
         return launchOptions;
       });
 
+      
+        configurePlugin(on);
+    
 
       return config
     },

@@ -2,19 +2,17 @@
   "name": "homework",
   "packageManager": "yarn@3.6.3",
   "dependencies": {
+    "cypress-mongodb": "^6.2.0",
     "log4js": "^6.9.1",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
     "cypress": "^13.2.0"
   },
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "cy:open": "cypress open",
-    "cy:run_chrome": "cypress run --headless -b chrome",
+    "cy:run_chrome": "cypress run --headless -b chrome --env urlFromCli=$ENV_URL",
     "cy:run_chrome_headed": "cypress run --headed -b chrome --env urlFormCli=$ENV_URL"
-     
   }
-
 }
