@@ -100,7 +100,6 @@ Cypress.Commands.add('createNewCategory', (category) => {
 
 
     //     const value = JSON.stringify(response.body._id)
-    //     cy.log(`NNNNNNNNNNNNNNNNN: ${JSON.stringify(response.body._id)}`);
     //     cy.log(`Created category with ID: ${categotyId1}`);
         return response.body._id
        
@@ -109,7 +108,6 @@ Cypress.Commands.add('createNewCategory', (category) => {
 
 Cypress.Commands.add('createNewPosition', (positionName, cost, categoryId) => {
     const accessToken = localStorage.getItem('auth-token')
-    // cy.log(`FOFFFF AAA: ${accessToken}`);
     // cy.log(`FOFFFF AA222222: ${categotyId}`);
 
     cy.request({

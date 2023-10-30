@@ -24,13 +24,15 @@ describe('Create new position with categoryID and check via UI test', () => {
         });
             
         //Assert
-        //new category is created
+       
+           //new category is created
         cy.wrap(null).then(() => {
             cy.visit('http://5.189.186.217/categories')
             cy.get('.content a.collection-item').should('be.visible')
             cy.contains('New category 7')
             .should('be.visible')
             .click()
+           
             //new position is created        
             cy.visit(`http://5.189.186.217/categories/${categoryId}`)
             cy.get('a.collection-item.collection-item-icon').should('be.visible')
