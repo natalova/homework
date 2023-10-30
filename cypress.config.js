@@ -2,22 +2,17 @@ const { defineConfig } = require ('cypress');
 const fs = require ('fs-extra');
 const path = require  ('path');
 //import {configurePlagin} from "cypress-mongodb";
-const {configurePlagin} = require ("cypress-mongodb")
+const {configurePlugin} = require ("cypress-mongodb");
 
 
-//export default defineConfig({
-  module.exports = defineConfig({
+module.exports = defineConfig({
   env: {
     mongodb: {
       uri: 'mongodb://127.0.0.1:27017',
       database: 'test'
     }
-  }
-})
-
-
-
-module.exports = defineConfig({
+  },
+ 
   e2e: {
     experimentalStudio: true,
     viewportHeight: 900,

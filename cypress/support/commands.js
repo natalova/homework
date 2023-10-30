@@ -101,28 +101,16 @@ Cypress.Commands.add('createNewCategory', (category) => {
 
     //     const value = JSON.stringify(response.body._id)
     //     cy.log(`NNNNNNNNNNNNNNNNN: ${JSON.stringify(response.body._id)}`);
-    //     const categotyId1 = response.body._id;
-	// 	localStorage.setItem('categotyId', value);
-    //     localStorage.setItem('test', '22222');
-
     //     cy.log(`Created category with ID: ${categotyId1}`);
-    //    // Cypress.env('categoryId', categoryId);
-    //    // return response.body
+        return response.body._id
        
     });
 })
 
-//Cypress.Commands.overwrite('log', (subject, message) => cy.task('log', message));
-
-
-Cypress.Commands.add('createNewPosition', (positionName, cost) => {
+Cypress.Commands.add('createNewPosition', (positionName, cost, categoryId) => {
     const accessToken = localStorage.getItem('auth-token')
-    const categotyId = localStorage.getItem('categotyId')
-    // const test = localStorage.getItem('test')
-
-    // //const categotyId = localStorage.getItem('categotyId')
-    // cy.log(`FOFFFF DIMAAA: ${accessToken}`);
-    // cy.log(`FOFFFF DIMAAA222222: ${categotyId}`);
+    // cy.log(`FOFFFF AAA: ${accessToken}`);
+    // cy.log(`FOFFFF AA222222: ${categotyId}`);
 
     cy.request({
         method: 'POST',
@@ -130,7 +118,7 @@ Cypress.Commands.add('createNewPosition', (positionName, cost) => {
         body: {
             name: positionName,
 			cost: cost,
-			category: categotyId,			
+			category: categoryId,			
         },
         headers: {
             authorization: `${accessToken}`
