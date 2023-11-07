@@ -1,11 +1,14 @@
 const {ObjectId} = require ("mongodb")
 
+
 //import {ObjectId} from 'mongodb'
 
 describe('Find data', () => {
 
     context ('usage of mongodb', () => {
-    it('findMany', () => {
+    
+    
+        it('findMany', () => {
         cy.findMany({},{collection: 'users'}).then((mongoresult) => {
             cy.task('log', mongoresult)
         })
@@ -13,26 +16,41 @@ describe('Find data', () => {
 })
 
 
-context.skip ('UI & API request', () => {
+context('UI & API request', () => {
+
+    it('login by UI', () => {
+
+        cy.request({
+            method: 'POST',
+            url: '/api/users/authenticate',
+            body: {username:"user3", password: "123456"}
+        }).then ((response) => {
+        const authToken = response.body.token
+        Cypress.env('authTNext13', authToken)
+        })
+    })
+
     it('create user', () => {
         cy.request ({
             method: 'POST',
-            url: '/api/users/registration',
+            url: '/api/users/register',
             headers: {
-                authorization: 'ssasd'
+                authorization: `Bearer ${Cypress.env('authTNext13')}`
             },
 
             body: {
-                firstName: 'fff3',
-                lastname: 'sss3',
-                username:'33',
-                password:'333',
+                firstName: 'Nata',
+                lastName: 'Testlast',
+                username:'nataliatestcreate',
+                password:'qwe123',
+       }
+    })
+ })
 
-            }
-
-        }
-
-        )
+        it('findMany', () => {
+            cy.findMany({},{collection: 'users'}).then((mongoresult) => {
+                cy.task('log', mongoresult)
+            })
         })
     })
 })

@@ -66,6 +66,8 @@
 //     })
 // })
 
+//import fs from 'fc-extra'
+
 Cypress.Commands.add('loginAndSetLocalStorege', () => {
     cy.request({
         method: 'POST',
@@ -76,14 +78,45 @@ Cypress.Commands.add('loginAndSetLocalStorege', () => {
         },
     }).then((response) => {
         const accessToken = response.body.token;
-        // Store the access token in local
+        // // Store the token in JSON
+        // fs.whriteFileSync ('token.json', JSON.stringify (accessToken))
+        // Store the access token in localstorage
         localStorage.setItem('auth-token', accessToken);
-        localStorage.setItem('test', '11111');
+       
     });
 })
 
+// my Home work
+
+// Cypress.Commands.add('createNewCategory', (category) => {
+//     const accessToken = window.localStorage.getItem('auth-token')
+//     cy.request({
+//         method: 'POST',
+//         url: 'http://5.189.186.217/api/category',
+//         body: {
+//             name: category
+//         },
+//         headers: {
+//             authorization: `${accessToken}`
+//         }
+   
+//     }).then((response) => {
+//         const categotyId = response.body._id;
+//         localStorage.setItem('category', categotyId);
+
+
+//     //     const value = JSON.stringify(response.body._id)
+//     //     cy.log(`Created category with ID: ${categotyId1}`);
+//         return response.body._id
+       
+//     });
+// })
+
+
 Cypress.Commands.add('createNewCategory', (category) => {
+
     const accessToken = window.localStorage.getItem('auth-token')
+    
     cy.request({
         method: 'POST',
         url: 'http://5.189.186.217/api/category',
@@ -93,36 +126,74 @@ Cypress.Commands.add('createNewCategory', (category) => {
         headers: {
             authorization: `${accessToken}`
         }
-   
     }).then((response) => {
-        const categotyId = response.body._id;
-        localStorage.setItem('category', categotyId);
+        // steps fot getting the category id for the next iterations
+        const categoryId = response.body._id;
+  // Store the categoryId in Cypress environment variable
+        Cypress.env('categoryId', categoryId);
 
-
-    //     const value = JSON.stringify(response.body._id)
-    //     cy.log(`Created category with ID: ${categotyId1}`);
-        return response.body._id
-       
-    });
+        return response.body
+    })
 })
 
-Cypress.Commands.add('createNewPosition', (positionName, cost, categoryId) => {
-    const accessToken = localStorage.getItem('auth-token')
-    // cy.log(`FOFFFF AA222222: ${categotyId}`);
+// my Home work
+
+// Cypress.Commands.add('createNewPosition', (positionName, cost, categoryId) => {
+//     const accessToken = localStorage.getItem('auth-token')
+//     // cy.log(`FOFFFF AA222222: ${categotyId}`);
+
+//     cy.request({
+//         method: 'POST',
+//         url: 'http://5.189.186.217/api/position',
+//         body: {
+//             name: positionName,
+// 			cost: cost,
+// 			category: categoryId,			
+//         },
+//         headers: {
+//             authorization: `${accessToken}`
+//         }
+//     }).then((response) => {
+//         return response.body
+//     });
+// })
+
+
+Cypress.Commands.add('createProduct', (position) => {
+
+    const accessToken = window.localStorage.getItem('auth-token');
+    const categoryId = Cypress.env('categoryId');
 
     cy.request({
         method: 'POST',
         url: 'http://5.189.186.217/api/position',
         body: {
-            name: positionName,
-			cost: cost,
-			category: categoryId,			
+            category: categoryId,
+            cost: 1,
+            name: position
         },
         headers: {
             authorization: `${accessToken}`
         }
     }).then((response) => {
         return response.body
-    });
+    })
 })
 
+
+Cypress.Commands.add('removeCategoryById', () => {
+    const accessToken = localStorage.getItem('auth-token')
+    const categoryId = Cypress.env('categoryId')
+
+    cy.request({
+        method: 'DELETE',
+        url: `http://5.189.186.217/api/category/${categoryId}`,
+       
+        headers: {
+            authorization: `${accessToken}`
+        }
+    }).then((response) => {
+      
+        expect(response.status).to.eq(200)
+    })
+})

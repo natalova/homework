@@ -2,12 +2,14 @@
   "name": "homework",
   "packageManager": "yarn@3.6.3",
   "dependencies": {
+    "@faker-js/faker": "^8.2.0",
     "cypress-mongodb": "^6.2.0",
     "log4js": "^6.9.1",
     "node-fetch": "^3.3.2"
   },
   "devDependencies": {
-    "cypress": "^13.2.0"
+    "cypress": "^13.2.0",
+    "cypress-mochawesome-reporter": "^3.6.1"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

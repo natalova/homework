@@ -12,6 +12,14 @@ module.exports = defineConfig({
       database: 'test'
     }
   },
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: 'HTML reports created by AQA wizart',
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+  },
  
   e2e: {
     experimentalStudio: true,
@@ -37,8 +45,8 @@ module.exports = defineConfig({
       }
     })
 
-      const newUrl = config.env.urlFromCli || 'https://www.guru99.com'
-      config.baseUrl = newUrl
+     // const newUrl = config.env.urlFromCli || 'https://www.guru99.com'
+     // config.baseUrl = newUrl
 
 
       on("before:browser:launch", (browser, launchOptions) => {
@@ -51,6 +59,8 @@ module.exports = defineConfig({
 
       
         configurePlugin(on);
+
+        require('cypress-mochawesome-reporter/plugin')(on);
     
 
       return config

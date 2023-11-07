@@ -18,6 +18,7 @@
 
 const {addCommands} = require ('cypress-mongodb/dist/index-browser');
 addCommands();
+import 'cypress-mochawesome-reporter/register';
 //import { addCommands } from 'cypress-mongodb/dist/index-browser';
 //addCommands();
 // Alternatively you can use CommonJS syntax:
