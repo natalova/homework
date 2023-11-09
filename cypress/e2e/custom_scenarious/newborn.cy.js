@@ -20,8 +20,7 @@ describe('login with api request', () => {
         cy.task('log', categoryName)
         cy.visit('http://5.189.186.217/categories')
         cy.wait(5000)
-        ///fail
-        cy.get('TEST.content a.collection-item', {timeout: 5000}).should('be.visible')
+        cy.get('.content a.collection-item', {timeout: 5000}).should('be.visible')
     })
 
 

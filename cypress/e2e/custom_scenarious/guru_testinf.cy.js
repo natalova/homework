@@ -71,7 +71,7 @@ describe('Testing guru website', () => {
     //     debugger
     // })
 //    cy.get('a[title="Software Testing"]').debug()
-     cy.visit('/software-testing.html')
+     cy.visit('https://www.guru99.com/software-testing.html')
      cy.log('test11111111')
      //cy.get('h2').pause()
      cy.task('log', { greeting: 'Hello', name: 'World' })
