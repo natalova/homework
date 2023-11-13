@@ -23,9 +23,10 @@ jobs:
     container:
       image: cypress/browsers:latest
       options: --user 1001
-      
+
     steps:
       - uses: actions/checkout@v3
       - uses: cypress-io/github-action@v5
         with:
           browser: chrome
+           spec: docker run -it -v $PWD:/e2e -w /e2e cypress/included:13.2.0 npm run cy_run_chrome_headed --spec cypress/e2e/custom_scenarious/newborn.cy.js
