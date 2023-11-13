@@ -32,5 +32,5 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
-          spec: cypress/e2e/custom_scenarious/newborn.cy.js
-          # spec: docker run -it -v $PWD:/e2e -w /e2e e cypress/browsers:node-20.9.0-chrome-118.0.5993.88-1-ff-118.0.2-edge-118.0.2088.46-1 npm run cy_run_chrome_headed --spec cypress/e2e/custom_scenarious/newborn.cy.js
+          # spec: cypress/e2e/custom_scenarious/newborn.cy.js
+          spec: docker run -it -v $PWD:/e2e -w /e2e e cypress/browsers:node-20.9.0-chrome-118.0.5993.88-1-ff-118.0.2-edge-118.0.2088.46-1 npm run cy_run_chrome_headed --spec cypress/e2e/custom_scenarious/newborn.cy.js
