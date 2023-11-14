@@ -48,7 +48,7 @@ jobs:
       - name: Checkout progect
         uses: actions/checkout@v4
       - name: Install dependencies
-        run: npm inxtall --force
+        run: npm install --force
       - name: Run test
         uses: cypress-io/github-action@v6
         with:
